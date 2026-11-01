@@ -1,0 +1,11 @@
+"""Baked god-girl sprite (63x88 sub-cells => 63 cells x 44 rows). Cropped from tools/god_design.py variant A."""
+from __future__ import annotations
+import base64, zlib
+import numpy as np
+W, H = 63, 88
+PALETTE = [(0, 0, 0), (10, 16, 34), (34, 56, 106), (48, 78, 142), (68, 104, 176), (96, 136, 206), (252, 253, 255), (226, 237, 250), (247, 250, 255), (236, 220, 220), (216, 190, 196), (16, 26, 50), (26, 41, 76), (38, 60, 106), (250, 253, 255), (58, 130, 222), (24, 82, 168), (8, 16, 34), (255, 255, 255), (247, 158, 178), (140, 74, 100), (208, 74, 96), (255, 216, 128), (255, 240, 186), (255, 194, 104), (226, 158, 78), (62, 138, 234), (40, 100, 190), (255, 176, 196), (238, 96, 128), (176, 52, 78), (255, 214, 224)]
+_B64 = ("eNrF2I1yozgMAGBiBwxrk8C1m4a02b7/W54ky7ZsDKE7N3OabBsCnyX/0bBN8//GsnnGUOi/afQGsKPAJm5H1S2kBUevLrSSThdxj5bPMkjUF5FdU3j8+OPjo8lzxlaoHAi4olLDDWXTGJkstBB64v81lOVWat9nmVNEaox60JB/xF771EZWbbIIRXSxgEfSnqcOMj63Z4qQ26T6HxCy+HAF5wGkvOU2TKrNPHzIBRYHx9sVx0NjFFzzeKx5HDAVdIWfDZw1a740IXXLF9f5WbU1zsMOmLkSvk0tAW/bKqdxX/E2L4R42wke5g6wbik0hOIfdMCHeEC8/fz8JL4kD6PaHuXsl2y/hZGSXJecL/rEkBsuDvghfj7L/XpP+i94dn+g/lY5vklbivPKNYvxgqebWLzPpk0KL70Xysg7QbbeQ/G7vMtSNZxbFr/P84ubRvng8zCmezyeViKghMT1MY51A+Wh/ylHv6RF9xM+x/Rx1alDXcfz5xXHXvyA613ey9D+cObIOC7Z5QVnfPEh+T31XfKhL2Lu58s/ENfrVb8ufhhCvbGByzF+9nxATGk5PekD2XHe52EIifH3jLVfkc/Ew6IN/cYQHHEs278FN4Ge50nHRVfProEP5eDN12mieZvS1vsvufAV3k8Teui+5NTrBQLX/C6fJ4qc59nVDu8nDj3Eu8U2F24IMw/dny6XWb/iuq8HzWGmodtxv2f8K5G0CN76gmML4Q+F9F/Bd+8Q/u3X21svBk4VXysF13Cl9+/v0cNHX0JXePRvVCjq3xDMk2Ye9zsOgeQ0ejiByN/DTOpVct/xZZVeMx+wdthD6LWu1H5flkr1vHpE6Fyr9UPBrtfV5CXf8LqmF/Fnoub1llZiyNMMHOEq7/lypPxNXem9aKDkalev/D6/b/HQQM5VmfyejeDaS559F8n8Uubv6rHueLV+51T5HIaPQcrtDVv0Dnjw8LWbNTXrXnNHXFnb8WMLYqs8d9vOYpBmjg9s8NyF2lrmzl9VxxjE/dvugY9tXeePVNRFAzCATvL4norvameKAuqcnpmsOHWAWxldlx261FI297Fh57IapZYnIr/zdPHSEvwJcaKfqeWwAl2+4ePnHfNxfH5/fz9Pzz9/gs+4KxZLkX2EAP7c4pXFFoP5+H0qeYhyv8DZUXKsHl6n0/O54qOjiVuyRefG6GG+OtTjkyN2C/E4lvNuPcfw2WG/0BFzXPbBjqPjdbNscvAeU/Gmwm25XVzGIX+mbdTMbZVjA9biLY48aTggzhfk696u+fBrgJfx2Xt8P/QveZwX/8d96Mkbvt9myyL5fEtRSG6MP+oLWuXeh+9y0Hu40/HBWlc4eeuB9f//JXhxrW3+BXL4hdA=")
+
+def get():
+    raw = zlib.decompress(base64.b64decode(_B64))
+    return np.frombuffer(raw, np.uint8).reshape(H, W), PALETTE

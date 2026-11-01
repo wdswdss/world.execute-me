@@ -1,0 +1,8 @@
+# world.execute(me); ASCII MV — runtime dependencies
+#   pip install -r requirements.txt
+#
+# Also required, not a pip package:
+#   * ffmpeg (with libx264; NVENC optional) on PATH, or set $FFMPEG
+#   * a monospace font + a CJK font (see fonts/README.md)
+numpy>=1.24
+Pillow>=10.1

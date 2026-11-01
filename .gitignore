@@ -1,0 +1,42 @@
+# ── rendered output / QA frames ──────────────────────────────────────────────
+# Everything here is regenerable from source (`make ...`) and far too big for
+# git: the 4K master alone is ~670 MB.
+/out/
+/qa/
+/tmp_patch*.py
+
+# ── audio: NOT redistributable ───────────────────────────────────────────────
+# The song is Mili's copyrighted work.  Put your own copy at audio/song.wav
+# (see audio/README.md); it is never committed.
+/audio/*.wav
+/audio/*.mp3
+/audio/*.m4a
+/audio/*.flac
+/audio/*.ogg
+/audio/*.npz
+/audio/source.*
+
+# ── fonts ────────────────────────────────────────────────────────────────────
+# Consolas / Microsoft YaHei / Malgun Gothic are proprietary.  Drop your own
+# .ttf/.ttc in here (or point $ASCIIMV_FONTS at a directory).
+/fonts/*
+!/fonts/README.md
+
+# ── internal notes ───────────────────────────────────────────────────────────
+/docs/HANDOVER.md
+
+# ── python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# ── os / editor noise ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
