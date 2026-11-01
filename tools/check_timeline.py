@@ -172,9 +172,16 @@ def check_schedule():
                           f"{kb} starts {float(t0b):.6f} (delta {d:+.6f})")
     stats["edges"].append(round(float(sched[-1][1]), 6))
     end = float(sched[-1][1])
-    if abs(end - L.DURATION) > 1e-9:
-        issues.append(f"schedule ends {end:.6f}s, DURATION is {L.DURATION:.6f}s "
-                      f"(delta {end - L.DURATION:+.6f})")
+    # The timeline intentionally stops before the end of the video: TAIL_HOLD
+    # seconds of black tail let the last line sit for a beat.  Only the part
+    # before the tail must be covered by the schedule.
+    tail = float(getattr(L, "TAIL_HOLD", 0.0))
+    want = float(L.DURATION) - tail
+    if abs(end - want) > 1e-6:
+        issues.append(f"schedule ends {end:.6f}s, expected {want:.6f}s "
+                      f"(DURATION {L.DURATION:.6f}s - TAIL_HOLD {tail:.1f}s; "
+                      f"delta {end - want:+.6f})")
+    stats["tail_hold"] = round(tail, 6)
 
     # modules load and expose draw(ctx)
     for t0, t1, key, mod in sched:
