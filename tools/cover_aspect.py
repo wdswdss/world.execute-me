@@ -30,6 +30,7 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, ROOT)
 sys.path.insert(0, HERE)
 
+from outpath import ensure_parent                  # noqa: E402
 from engine import layout as L                    # noqa: E402
 
 ASPECTS = {"16x9": (192, 1920), "4x3": (144, 1440)}
