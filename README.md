@@ -66,7 +66,7 @@ AC→DC 整流、神经刺激、满意度评分、心跳、碎片、永远差一
 ## 快速开始
 
 ```bash
-git clone https://github.com/<owner>/world-execute-ascii
+git clone https://github.com/yym8224961/world-execute-ascii
 cd world-execute-ascii
 pip install -r requirements.txt          # numpy + Pillow
 # ffmpeg 需要在 PATH 里（或 export FFMPEG=/path/to/ffmpeg）
