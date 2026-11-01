@@ -31,5 +31,5 @@ be taken down within 24 hours, no legal process needed.
 
 ```
 world.execute(me); ASCII MV — a 192x60 character-grid music video for
-Mili's "world.execute(me);". https://github.com/yym8224961/world.execute-me
+Mili's "world.execute(me);". https://github.com/wdswdss/world.execute-me
 ```

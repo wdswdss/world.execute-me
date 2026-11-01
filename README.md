@@ -66,7 +66,7 @@ AC→DC 整流、神经刺激、满意度评分、心跳、碎片、永远差一
 ## 快速开始
 
 ```bash
-git clone https://github.com/yym8224961/world.execute-me
+git clone https://github.com/wdswdss/world.execute-me
 cd world.execute-me
 pip install -r requirements.txt          # numpy + Pillow
 # ffmpeg 需要在 PATH 里（或 export FFMPEG=/path/to/ffmpeg）
