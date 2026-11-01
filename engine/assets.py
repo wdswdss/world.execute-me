@@ -87,16 +87,56 @@ def snap_beat(t):
     return beat_time(round((t - T0) / BEAT))
 
 
+def _synthetic_spec(fps, dur, beats):
+    """A neutral envelope for checkouts without the song.
+
+    The repo cannot ship audio (Mili's copyright), so a fresh clone has no
+    audio/spectrum.npz.  Rendering still works: we fake a plausible envelope
+    from the beat grid so motion keyed on rms/bands stays alive instead of
+    flatlining.  Run `python tools/build_assets.py` with your own copy of the
+    song to get the real analysis.
+    """
+    n = int(dur * fps) + 2
+    t = np.arange(n, dtype=np.float32) / float(fps)
+    if beats is not None and len(beats) > 1:
+        beat = float(np.median(np.diff(beats)))
+    else:
+        beat = 60.0 / 130.0
+    phase = ((t - T0) / max(1e-3, beat)) % 1.0
+    env = 0.25 + 0.55 * np.exp(-6.0 * phase)          # (N,)
+    tilt = np.linspace(1.25, 0.45, 64, dtype=np.float32)  # low freqs louder
+    bands = (env[:, None] * tilt[None, :]).astype(np.float32)
+    rms = (0.30 + 0.35 * np.exp(-5.0 * phase)).astype(np.float32)
+    vocal = np.zeros(n, np.float32)
+    return bands, rms, vocal
+
+
 class Assets:
     def __init__(self, root=None):
         root = root or ROOT
         audio = os.path.join(root, "audio")
-        spec = np.load(os.path.join(audio, "spectrum.npz"))
-        self.bands = spec["bands"].astype(np.float32)      # (N,64)
-        self.rms = spec["rms"].astype(np.float32)
-        self.vocal = spec["vocal"].astype(np.float32)
-        self.n_frames = self.bands.shape[0]
-        self.fps = int(spec["fps"]) if "fps" in spec else FPS
+        spec_path = os.path.join(audio, "spectrum.npz")
+        if os.path.exists(spec_path):
+            spec = np.load(spec_path)
+            self.bands = spec["bands"].astype(np.float32)      # (N,64)
+            self.rms = spec["rms"].astype(np.float32)
+            self.vocal = spec["vocal"].astype(np.float32)
+            self.n_frames = self.bands.shape[0]
+            self.fps = int(spec["fps"]) if "fps" in spec else FPS
+        else:
+            # no song in the repo -> synthetic envelope (see _synthetic_spec)
+            self.fps = FPS
+            beats = None
+            try:
+                with open(os.path.join(audio, "beats.json"), encoding="utf-8") as f:
+                    beats = np.array(json.load(f)["beats"], np.float32)
+            except Exception:
+                pass
+            self.bands, self.rms, self.vocal = _synthetic_spec(FPS, DURATION, beats)
+            self.n_frames = self.bands.shape[0]
+            print("[assets] audio/spectrum.npz not found - using a synthetic "
+                  "envelope (put the song at audio/song.wav and run "
+                  "tools/build_assets.py for the real one)")
         try:
             bj = np.load(os.path.join(audio, "beats.npz"))
             self.beats = bj["beats"].astype(np.float32)
