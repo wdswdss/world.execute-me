@@ -2,7 +2,7 @@
 
 这支 MV 是"人给意图 + agent 写场景 + 静帧验收"循环出来的产物。
 这一页是那套循环的可复用版本——**为什么这么写、每层提示词长什么样、什么时候该打回**。
-可直接复制的模板在 [`prompts/`](../prompts/)。
+可直接复制的模板在 [`templates/`](templates/)。
 
 ## 0. 前提：agent 看不见画面
 
@@ -20,7 +20,7 @@
 ### 第一层：项目 brief（只写一次）
 
 给 agent 定死不可协商的东西：网格尺寸、图层边界、技术栈、禁止项、验收命令。
-模板：[`prompts/00-project-brief.md`](../prompts/00-project-brief.md)。
+模板：[`templates/00-project-brief.md`](templates/00-project-brief.md)。
 
 关键是**把"不许做什么"写清楚**，因为它们比"要做什么"更容易被违反：
 
@@ -41,8 +41,8 @@
 验收静帧：t = 30.1 / 41.8 / 44.4
 ```
 
-模板：[`prompts/01-scene-spec.md`](../prompts/01-scene-spec.md)。
-三个真实例子：[`prompts/03-examples.md`](../prompts/03-examples.md)。
+模板：[`templates/01-scene-spec.md`](templates/01-scene-spec.md)。
+三个真实例子：[`templates/03-examples.md`](templates/03-examples.md)。
 
 ### 第三层：打回（review）
 
@@ -59,7 +59,7 @@
 3. **全片级**
    > 抽 4000 帧检查：无异常、无 NaN、EN 行没有混进中文、所有字形都有掩码。
 
-模板：[`prompts/02-review.md`](../prompts/02-review.md)。
+模板：[`templates/02-review.md`](templates/02-review.md)。
 
 ## 2. 循环节奏
 

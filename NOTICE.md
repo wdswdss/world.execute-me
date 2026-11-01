@@ -25,7 +25,7 @@ be taken down within 24 hours, no legal process needed.
 - 音乐/原词：**Mili** —《world.execute(me);》（2016，专辑 *Miracle Milk*）
 - MV 引擎 / 场景 / 字幕排版：本仓库贡献者
 - 本作品的创作过程由 **DeepSeek Harness** 里的 AI agent 协作完成，
-  指令记录整理见 `docs/PROMPTS.md`
+  指令记录整理见 `docs/prompts/method.md`
 
 ## 引用格式 —— cite as
 

@@ -11,7 +11,7 @@
 | [`04-agent-rules.md`](04-agent-rules.md) | 给 agent 的"现场守则"——多帧渲染/并行的坑，贴在 brief 后面 |
 
 方法论（为什么这么写、循环节奏、踩过的坑）在
-[`../docs/PROMPTS.md`](../docs/PROMPTS.md)。
+[`../method.md`](../method.md)。
 
 ## 最短可用流程
 

@@ -32,7 +32,7 @@ ffmpeg 只有出片才需要；字体见 [`fonts/README.md`](fonts/README.md)。
 ## 场景代码的硬规则
 
 这些不是风格偏好，违反了会产出不一致或崩坏的帧（原因见
-[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) §4 与 [`prompts/04-agent-rules.md`](prompts/04-agent-rules.md)）：
+[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) §4 与 [`docs/prompts/templates/04-agent-rules.md`](docs/prompts/templates/04-agent-rules.md)）：
 
 - 只画 `Frame(45, 192)` 舞台；页眉/字幕条/页脚属于 `chrome.py`
 - 时间只从 `ctx` 拿；**禁止** `time.time()`

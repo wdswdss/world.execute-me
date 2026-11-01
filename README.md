@@ -7,11 +7,21 @@
 每一帧都是 Python 在这个 **192×60 的字符网格**上现画的：字符、颜色、扫描线，
 外加一套从零写的渲染引擎。没有视频素材、没有 AI 生成图、没有剪辑软件。
 
-[▶ 成片（B站）](#) · [截图](#截图) · [快速开始](#快速开始) · [架构](docs/ARCHITECTURE.md) · [提示词](docs/PROMPTS.md)
+[▶ 成片（B站）](#) · [截图](#截图) · [创作提示词](docs/prompts/creation-prompts.md) · [快速开始](#快速开始) · [架构](docs/ARCHITECTURE.md)
 
 </div>
 
 ![封面](media/cover_16x9.jpg)
+
+## 创作提示词
+
+整理了这支 MV 从终端播放器到 4K60 视频线、再到封面与开源的 **12 轮提示词**，以及一份方便复用的合并版。
+
+- **[在线阅读创作过程](docs/prompts/creation-prompts.md)**：按轮次查看需求、场景位置与修改方向，文内目录可直接跳转。
+- **[直接查看合并提示词](docs/prompts/creation-prompts.md#combined-prompt)**：适合整体阅读和复制使用。
+- **[纯文本版](docs/prompts/creation-prompts.txt)**：方便保存到本地或在文本编辑器中打开。
+
+更早的 25 轮（终端播放器形态）在姊妹仓库 [yym8224961/world.execute-me-ascii](https://github.com/yym8224961/world.execute-me-ascii/blob/main/docs/prompts/creation-prompts.md)。
 
 ---
 
@@ -112,6 +122,7 @@ engine/
   post.py       CRT 后处理：扫描线、孔径、暗角、色散、噪点、闪白
 bin/asciimv.py  终端播放器（同一套引擎，直接输出 ANSI）
 tools/          still / render / render_subs / compose_subs / mux_sfx / cover / check_timeline …
+docs/           ARCHITECTURE（帧生命周期）/ RENDERING（4K 管线）/ SCENE_API（写场景）/ prompts（创作提示词）
 ```
 
 图层顺序是固定的：**场景画舞台 → chrome 加边框和字幕 → post 加 CRT → 编码**。
@@ -149,8 +160,8 @@ tools/          still / render / render_subs / compose_subs / mux_sfx / cover / 
 ## 用 AI agent 一起做
 
 这支 MV 的生产过程是“人给意图、agent 写场景、静帧验收”的循环：21 个场景各写各的，
-每个场景先用 `tools/still.py` 出静帧人工点头，再进渲染队列。指令、验收标准和踩过的坑
-整理在 [`docs/PROMPTS.md`](docs/PROMPTS.md)，可以直接当模板喂给别的 agent 去改这支 MV，
+每个场景先用 `tools/still.py` 出静帧人工点头，再进渲染队列。方法论、模板与验收标准整理在
+[`docs/prompts/method.md`](docs/prompts/method.md)，可以直接当模板喂给别的 agent 去改这支 MV，
 或者做你自己的那支。
 
 ## 换成你自己的歌
