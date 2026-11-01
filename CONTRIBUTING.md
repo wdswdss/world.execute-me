@@ -5,7 +5,7 @@
 ## 环境
 
 ```bash
-git clone <your-fork> && cd world-execute-ascii
+git clone <your-fork> && cd world.execute-me
 pip install -r requirements.txt     # numpy + Pillow
 python tools/still.py --t 41.8 --out out/still.png    # 能出图就说明环境 OK
 ```

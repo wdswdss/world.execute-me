@@ -8,6 +8,6 @@
 | [method.md](method.md) | **方法论**：怎样让人给意图、agent 写场景、静帧验收，包含分工、验收标准和常见失败模式。 |
 | [templates/](templates/) | **可直接复制的模板**：项目 brief、场景 spec、review 回合、真实例子、agent 行为准则。 |
 
-姊妹仓库 [yym8224961/world.execute-me-ascii](https://github.com/yym8224961/world.execute-me-ascii/blob/main/docs/prompts/creation-prompts.md) 里的 25 轮提示词，是终端播放器形态下把画面语言定下来的那一段；本仓库的 `creation-prompts.md` 从「做成 4K60 视频」开始接力。
+`creation-prompts.md` 现在收全了 37 轮：第 01–25 轮是终端播放器形态（画面语言就是那几轮定下来的，姊妹仓库 [yym8224961/world.execute-me-ascii](https://github.com/yym8224961/world.execute-me-ascii) 是那份工程的独立归档），第 26 轮起是 4K60 视频线。
 
 配套阅读：[`../ARCHITECTURE.md`](../ARCHITECTURE.md)（帧的生命周期与模块边界）、[`../RENDERING.md`](../RENDERING.md)（4K 管线与分帧重渲）、[`../SCENE_API.md`](../SCENE_API.md)（写一个场景需要的 API）。

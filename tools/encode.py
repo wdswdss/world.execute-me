@@ -1,6 +1,6 @@
 """Encode / mux the final MV.
 
-Usage (from world-execute-ascii/):
+Usage (from the repo root):
     python tools/encode.py --video out/full_video.mp4 --audio audio/song.wav \
         --out out/world_execute_me.mp4
 

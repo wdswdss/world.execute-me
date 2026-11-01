@@ -7,7 +7,7 @@
 每一帧都是 Python 在这个 **192×60 的字符网格**上现画的：字符、颜色、扫描线，
 外加一套从零写的渲染引擎。没有视频素材、没有 AI 生成图、没有剪辑软件。
 
-[▶ 成片（B站）](#) · [截图](#截图) · [创作提示词](docs/prompts/creation-prompts.md) · [快速开始](#快速开始) · [架构](docs/ARCHITECTURE.md)
+[▶ 成片（B站）](https://www.bilibili.com/video/BV1yJxx61E4U) · [截图](#截图) · [创作提示词](docs/prompts/creation-prompts.md) · [快速开始](#快速开始) · [架构](docs/ARCHITECTURE.md)
 
 </div>
 
@@ -15,13 +15,13 @@
 
 ## 创作提示词
 
-整理了这支 MV 从终端播放器到 4K60 视频线、再到封面与开源的 **12 轮提示词**，以及一份方便复用的合并版。
+整理了这支 MV 从终端播放器到 4K60 视频线、再到封面与开源的 **37 轮提示词**，以及一份方便复用的合并版。
 
 - **[在线阅读创作过程](docs/prompts/creation-prompts.md)**：按轮次查看需求、场景位置与修改方向，文内目录可直接跳转。
 - **[直接查看合并提示词](docs/prompts/creation-prompts.md#combined-prompt)**：适合整体阅读和复制使用。
 - **[纯文本版](docs/prompts/creation-prompts.txt)**：方便保存到本地或在文本编辑器中打开。
 
-更早的 25 轮（终端播放器形态）在姊妹仓库 [yym8224961/world.execute-me-ascii](https://github.com/yym8224961/world.execute-me-ascii/blob/main/docs/prompts/creation-prompts.md)。
+前 25 轮是终端播放器形态（画面语言就是那几轮定下来的），第 26 轮起转到视频管线，全部收在同一个文档里。姊妹仓库 [yym8224961/world.execute-me-ascii](https://github.com/yym8224961/world.execute-me-ascii) 是当时那份播放器工程的独立归档。
 
 ---
 
@@ -66,8 +66,8 @@ AC→DC 整流、神经刺激、满意度评分、心跳、碎片、永远差一
 ## 快速开始
 
 ```bash
-git clone https://github.com/yym8224961/world-execute-ascii
-cd world-execute-ascii
+git clone https://github.com/yym8224961/world.execute-me
+cd world.execute-me
 pip install -r requirements.txt          # numpy + Pillow
 # ffmpeg 需要在 PATH 里（或 export FFMPEG=/path/to/ffmpeg）
 ```
