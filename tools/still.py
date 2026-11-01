@@ -15,6 +15,8 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from outpath import ensure_parent, ensure_dir  # noqa: E402
 sys.path.insert(0, ROOT)
 
 from engine import layout as L          # noqa: E402
@@ -60,6 +62,7 @@ def contact_sheet(images, cols, out, scale=0.35, labels=None):
         sheet.paste(thumb, (c * w, r * h))
         if labels:
             d.text((c * w + 6, r * h + 4), labels[i], font=font, fill=(255, 220, 120))
+    ensure_parent(out)
     sheet.save(out)
     return out
 
@@ -101,6 +104,7 @@ def main():
             if len(ts) > 1:
                 base, ext = os.path.splitext(name)
                 name = f"{base}_{t:07.3f}{ext or '.png'}"
+            ensure_parent(name)
             im.save(name)
             print("wrote", name, "scene=", ctx.scene)
 

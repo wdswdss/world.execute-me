@@ -14,6 +14,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from outpath import ensure_parent, ensure_dir  # noqa: E402
 from ffbin import ffmpeg_bin  # noqa: E402
 
 FFMPEG = ffmpeg_bin()
@@ -38,6 +39,7 @@ def main() -> None:
     vdur = probe_duration(args.video)
     adur = probe_duration(args.audio)
     total = max(vdur, adur)
+    ensure_parent(args.out)
     cmd = [FFMPEG, "-y", "-hide_banner", "-loglevel", "warning",
            "-i", args.video, "-i", args.audio,
            "-map", "0:v:0", "-map", "1:a:0",

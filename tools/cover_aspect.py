@@ -144,6 +144,7 @@ def main():
     im = Image.fromarray(img)
     out = args.out
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
+    ensure_parent(out + ".png")
     im.save(out + ".png")
     im.convert("RGB").save(out + ".jpg", quality=92, subsampling=0)
     im.resize((320, round(320 * im.height / im.width)), Image.LANCZOS).save(

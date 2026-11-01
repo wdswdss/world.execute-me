@@ -25,6 +25,8 @@ import numpy as np
 from PIL import Image, ImageFilter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from outpath import ensure_parent, ensure_dir  # noqa: E402
 sys.path.insert(0, ROOT)
 
 from engine import layout as L          # noqa: E402
@@ -308,7 +310,7 @@ def main():
     ap.add_argument("--thumb", default=None)
     args = ap.parse_args()
     im = build()
-    os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
+    ensure_parent(args.out)
     im.save(args.out)
     print("wrote", args.out, im.size)
     th = args.thumb or os.path.splitext(args.out)[0] + "_thumb320.png"

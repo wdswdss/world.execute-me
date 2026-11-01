@@ -12,6 +12,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from outpath import ensure_parent, ensure_dir  # noqa: E402
 from ffbin import ffmpeg_bin  # noqa: E402
 
 FFMPEG = ffmpeg_bin()
@@ -44,6 +45,7 @@ def main():
         enc = ["-c:v", "libx264", "-preset", args.preset, "-crf", str(args.crf),
                "-profile:v", "high", "-level", "4.1"]
 
+    ensure_parent(args.out)
     cmd = [FFMPEG, "-y", "-hide_banner", "-loglevel", "warning",
            "-i", args.base,
            "-framerate", "60", "-start_number", str(args.start_frame),
